@@ -13,7 +13,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import firebase from 'firebase';
 
 // Init Firebase
-const  config = {
+const config = {
   apiKey: "AIzaSyAFn-kqs3bYBW251w6HrGZBvtuRTOfqzQk",
   authDomain: "whatappclone-ac5c1.firebaseapp.com",
   databaseURL: "https://whatappclone-ac5c1.firebaseio.com",
@@ -55,7 +55,7 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
       })
       .catch((error) => {
         reject(error);
-    })
+      })
   })
 }
 
@@ -70,18 +70,18 @@ class App extends Component {
   _pickImage() {
     this.setState({ uploadURL: '' });
 
-    ImagePicker.launchImageLibrary({}, response  => {
+    ImagePicker.launchImageLibrary({}, response => {
       uploadImage(response.uri)
         .then(url => this.setState({ uploadURL: url }))
         .catch(error => console.log(error));
     })
   }
 
- 
+
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={styles.container}>
         {
           (() => {
             switch (this.state.uploadURL) {
@@ -94,16 +94,16 @@ class App extends Component {
                   <View>
                     <Image
                       source={{ uri: this.state.uploadURL }}
-                      style={ styles.image }
+                      style={styles.image}
                     />
-                    <Text>{ this.state.uploadURL }</Text>
+                    <Text>{this.state.uploadURL}</Text>
                   </View>
                 )
             }
           })()
         }
-        <TouchableOpacity onPress={ () => this._pickImage() }>
-          <Text style={ styles.upload }>
+        <TouchableOpacity onPress={() => this._pickImage()}>
+          <Text style={styles.upload}>
             Upload
           </Text>
         </TouchableOpacity>
