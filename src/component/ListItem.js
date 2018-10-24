@@ -12,7 +12,9 @@ import React, {
       return (
         <View >
          
-          <Image source={this.props.task.url} />
+          <Image source={{uri:this.props.task.url}}
+          
+          style={{resizeMode: 'contain', height: 300}} />
         </View>
       );
     }
