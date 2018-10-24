@@ -7,12 +7,12 @@ import {
   Platform,
   Image,
   ActivityIndicator
-} from 'react-native'
+} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
 import firebase from 'firebase';
 
-// Init Firebase
+/* Init Firebase
 const config = {
   apiKey: "AIzaSyAFn-kqs3bYBW251w6HrGZBvtuRTOfqzQk",
   authDomain: "whatappclone-ac5c1.firebaseapp.com",
@@ -24,7 +24,7 @@ const config = {
 
 firebase.initializeApp(config)
 const storage = firebase.storage();
-
+*/
 // Prepare Blob support
 const Blob = RNFetchBlob.polyfill.Blob;
 const fs = RNFetchBlob.fs;
@@ -61,23 +61,27 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 
 
 class App extends Component {
+
+
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = {};;
+    this.state = {}
   }
-
+  
   _pickImage() {
     this.setState({ uploadURL: '' });
 
     ImagePicker.launchImageLibrary({}, response => {
       uploadImage(response.uri)
         .then(url => this.setState({ uploadURL: url }))
+        .then(() => {
+          const url = this.state.uploadURL;
+          firebase.database().ref(`/images/`).push({ url });
+        })
         .catch(error => console.log(error));
     })
   }
-
-
 
   render() {
     return (
@@ -107,6 +111,7 @@ class App extends Component {
             Upload
           </Text>
         </TouchableOpacity>
+
       </View>
     )
   }
