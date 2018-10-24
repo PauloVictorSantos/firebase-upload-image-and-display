@@ -101,8 +101,7 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 ## Listando as imagens do Firebase Storage:
 
 O componente Itens é usando para listar imagens:
-
-![](https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/Itens.js)
+https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/Itens.js
 
 
 **1. Importante ressaltar que a url da imagens no Firebase Storage são salvas no Firebase Database:  **
