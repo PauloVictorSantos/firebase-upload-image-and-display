@@ -100,6 +100,10 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 ```
 ## Listando as imagens do Firebase Storage:
 
+O arquivos usando para listar imagens 
+![](https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/Itens.js)
+
+
 **1. Importante ressaltar que a url da imagens no Firebase Storage são salvas no Firebase Database:  **
 
 Conforme implementado na função _pickImage :
@@ -119,6 +123,8 @@ _pickImage() {
     })
   }
 ```
+Dados no Firebase DataBase:
+![](https://gyazo.com/73600188d3222c53ccdaad6d4726e5ce)
 
 
 Basically it uses Firebase SDK to create a reference to the Storage folder, then
