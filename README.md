@@ -1,6 +1,6 @@
 # firebase-upload-image-and-display
 aplicativo demo em react-native para upload e exibição de imagens usando firebase storage,
-baseado no repositório https://github.com/PauloVictorSantos/Firebase-Image-Upload-React-Native.git
+baseado no repositório https://github.com/PauloVictorSantos/Firebase-Image-Upload-React-Native.git.
 Realizei uma atualização na documentação do repositório. Segue a atualização.
 
 
@@ -98,6 +98,30 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
   })
 }
 ```
+# Listando as imagens do Firebase Storage:
+
+**1. Importante ressaltar que a url da imagens no Firebase Storage são salvas no Firebase Database:  **
+
+Conforme implementado na função _pickImage :
+
+```
+_pickImage() {
+    this.setState({ uploadURL: '' });
+
+    ImagePicker.launchImageLibrary({}, response => {
+      uploadImage(response.uri)
+        .then(url => this.setState({ uploadURL: url }))
+        .then(() => {
+          const url = this.state.uploadURL;
+          firebase.database().ref(`/images/`).push({ url });
+        })
+        .catch(error => console.log(error));
+    })
+  }
+```
+
+
+
 
 Basically it uses Firebase SDK to create a reference to the Storage folder, then
 write the binary data from the selected image to it.
