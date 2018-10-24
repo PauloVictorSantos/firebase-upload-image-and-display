@@ -100,7 +100,9 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 ```
 ## Listando as imagens do Firebase Storage:
 
-O arquivos usando para listar imagens 
+O arquivos usando para listar imagens
+
+
 ![](https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/Itens.js)
 
 
@@ -124,6 +126,8 @@ _pickImage() {
   }
 ```
 Dados no Firebase DataBase:
+
+
 ![](https://gyazo.com/73600188d3222c53ccdaad6d4726e5ce)
 
 
