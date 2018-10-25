@@ -123,7 +123,7 @@ _pickImage() {
     })
   }
 ```
-Dados no Firebase DataBase:
+Dados no Firebase Database:
 
 
 [![Image from Gyazo](https://i.gyazo.com/73600188d3222c53ccdaad6d4726e5ce.png)](https://gyazo.com/73600188d3222c53ccdaad6d4726e5ce)
