@@ -3,7 +3,8 @@ import React, {
   } from 'react';
   import {
     View,
-    Text, Image
+    Text, 
+    Image
   } from 'react-native';
   
   

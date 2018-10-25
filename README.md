@@ -100,13 +100,13 @@ const uploadImage = (uri, mime = 'application/octet-stream') => {
 ```
 ## Listando as imagens do Firebase Storage:
 
-O componente Itens é usando para listar imagens:
+A classe Itens é usada para listar imagens:
 https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/Itens.js
 
 
-**1. Importante ressaltar que a url da imagens no Firebase Storage são salvas no Firebase Database:  **
+ Importante ressaltar que a url da imagens no Firebase Storage são salvas no Firebase Database quando o upload da imagens são realizados:
 
-Conforme implementado na função _pickImage :
+Conforme implementado na função _pickImage da classe App.js :
 
 ```
 _pickImage() {
@@ -124,9 +124,35 @@ _pickImage() {
   }
 ```
 Dados no Firebase Database:
-
-
 [![Image from Gyazo](https://i.gyazo.com/73600188d3222c53ccdaad6d4726e5ce.png)](https://gyazo.com/73600188d3222c53ccdaad6d4726e5ce)
+
+
+**2. Implementação da função que traz as informações que contém urls do Firebase Database**
+
+Estou utilizando a função .map() da biblioteca lodash, portanto é necessário:
+```
+npm install --save lodash
+```
+Mais sobre a função aqui: https://lodash.com/docs/4.17.10#map
+
+```
+getUrlImg(imagens) {
+        imagens.once('value', snapshot => {
+            const imgs = _.map(snapshot.val(), (val, uid) => {
+                return { ...val, uid };
+            });
+            this.setState({ dataSource: this.state.dataSource.cloneWithRows(imgs) });
+        }).then(() => console.log(this.imgs))
+            .catch(error => console.error(error));
+    }
+```
+
+**3. Na classe ListaItens, o componente Image deve ser implementado conforme abaixo**
+ 
+```
+<Image source={{uri:this.props.task.url}}
+          style={{resizeMode: 'contain', height: 300}} />
+```
 
 
 Basically it uses Firebase SDK to create a reference to the Storage folder, then
