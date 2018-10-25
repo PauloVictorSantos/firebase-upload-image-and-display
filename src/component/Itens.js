@@ -31,7 +31,7 @@ export class Itens extends Component {
         };
     }
 
-    imagensFor(imagens) {
+    getUrlImg(imagens) {
         imagens.once('value', snapshot => {
             const imgs = _.map(snapshot.val(), (val, uid) => {
                 return { ...val, uid };
@@ -42,10 +42,8 @@ export class Itens extends Component {
     }
 
     componentDidMount(){
-        this.imagensFor(this.imagens);
+        this.getUrlImg(this.imagens);
     }
-
-
 
     _renderItem(task) {
         return (
