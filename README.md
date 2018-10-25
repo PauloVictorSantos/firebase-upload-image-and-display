@@ -127,7 +127,7 @@ Dados no Firebase Database:
 [![Image from Gyazo](https://i.gyazo.com/73600188d3222c53ccdaad6d4726e5ce.png)](https://gyazo.com/73600188d3222c53ccdaad6d4726e5ce)
 
 
-**2. Implementação da função que traz as informações que contém urls do Firebase Database**
+**1. Implementação da função que traz as informações que contém urls do Firebase Database**
 
 Estou utilizando a função .map() da biblioteca lodash, portanto é necessário:
 ```
@@ -147,7 +147,11 @@ getUrlImg(imagens) {
     }
 ```
 
-**3. Na classe ListaItens, o componente Image deve ser implementado conforme abaixo**
+**2. Na classe ListaItens,
+ o componente Image deve ser implementado conforme abaixo**
+ https://github.com/PauloVictorSantos/firebase-upload-image-and-display/blob/master/src/component/ListItem.js
+
+
  
 ```
 <Image source={{uri:this.props.task.url}}
